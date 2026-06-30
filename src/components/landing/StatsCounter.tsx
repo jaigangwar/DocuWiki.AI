@@ -94,7 +94,7 @@ export function StatsCounter() {
             transition={{
               delay: index * 0.15,
               duration: 0.6,
-              ease: [0.16, 1, 0.3, 1],
+              ease: [0.16, 1, 0.3, 1] as const,
             }}
           >
             <Tilt3D maxTilt={5} scale={1} glare>

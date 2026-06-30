@@ -29,7 +29,7 @@ export function Sidebar({ collapsed = false }: SidebarProps) {
       className="h-screen sticky top-0 flex flex-col glass border-r border-glass-border z-40"
       initial={false}
       animate={{ width: collapsed ? 64 : 220 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
     >
       {/* Logo */}
       <div className="p-4 flex items-center gap-3 border-b border-glass-border">
@@ -74,7 +74,7 @@ export function Sidebar({ collapsed = false }: SidebarProps) {
                 <motion.div
                   className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-neon-cyan rounded-full"
                   layoutId="activeNav"
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
                 />
               )}
 
