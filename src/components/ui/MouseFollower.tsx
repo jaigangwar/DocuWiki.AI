@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 export function MouseFollower() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [mounted, setMounted] = useState(false);
-  const RAFRef = useRef<number>();
+  const RAFRef = useRef<ReturnType<typeof requestAnimationFrame> | null>(null);
 
   useEffect(() => {
     setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
-      if (RAFRef.current) cancelAnimationFrame(RAFRef.current);
+      if (RAFRef.current !== null) cancelAnimationFrame(RAFRef.current);
       RAFRef.current = requestAnimationFrame(() => {
         setPosition({ x: e.clientX, y: e.clientY });
       });
@@ -19,7 +19,7 @@ export function MouseFollower() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      if (RAFRef.current) cancelAnimationFrame(RAFRef.current);
+      if (RAFRef.current !== null) cancelAnimationFrame(RAFRef.current);
     };
   }, []);
 
@@ -43,12 +43,12 @@ export function MouseFollower() {
 export function MouseTrail() {
   const [mounted, setMounted] = useState(false);
   const [points, setPoints] = useState<Array<{ x: number; y: number; id: string }>>([]);
-  const RAFRef = useRef<number>();
+  const RAFRef = useRef<ReturnType<typeof requestAnimationFrame> | null>(null);
 
   useEffect(() => {
     setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
-      if (RAFRef.current) cancelAnimationFrame(RAFRef.current);
+      if (RAFRef.current !== null) cancelAnimationFrame(RAFRef.current);
       RAFRef.current = requestAnimationFrame(() => {
         const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         setPoints((prev) => [...prev.slice(-8), { x: e.clientX, y: e.clientY, id }]);
@@ -57,7 +57,7 @@ export function MouseTrail() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      if (RAFRef.current) cancelAnimationFrame(RAFRef.current);
+      if (RAFRef.current !== null) cancelAnimationFrame(RAFRef.current);
     };
   }, []);
 
