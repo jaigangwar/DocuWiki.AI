@@ -1,0 +1,545 @@
+@import "tailwindcss";
+
+/* ================================================================
+   DocuWiki.AI — Tailwind CSS v4 Theme Configuration
+   Cyber-minimalist dark mode with neon accents & glassmorphism
+   ================================================================ */
+
+@theme {
+  /* ---- Neon Accent Palette ---- */
+  --color-neon-cyan: #06d6a0;
+  --color-neon-cyan-dim: #06d6a050;
+  --color-neon-cyan-glow: #06d6a025;
+  --color-neon-violet: #7c3aed;
+  --color-neon-violet-dim: #7c3aed50;
+  --color-neon-violet-glow: #7c3aed25;
+  --color-neon-pink: #f72585;
+  --color-neon-pink-dim: #f7258550;
+  --color-neon-pink-glow: #f7258525;
+  --color-neon-blue: #4361ee;
+  --color-neon-blue-dim: #4361ee50;
+  --color-neon-amber: #f59e0b;
+
+  /* ---- Surface Palette (Dark Mode) ---- */
+  --color-surface-900: #0a0a0f;
+  --color-surface-800: #0f0f1a;
+  --color-surface-700: #151525;
+  --color-surface-600: #1a1a2e;
+  --color-surface-500: #22223a;
+  --color-surface-400: #2a2a45;
+  --color-surface-300: #3a3a55;
+  --color-surface-200: #5a5a75;
+  --color-surface-100: #8a8aa0;
+
+  /* ---- Glass Surfaces ---- */
+  --color-glass-white: rgba(255, 255, 255, 0.03);
+  --color-glass-white-hover: rgba(255, 255, 255, 0.06);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* ---- Text ---- */
+  --color-text-primary: #e8e8f0;
+  --color-text-secondary: #9a9ab0;
+  --color-text-muted: #5a5a70;
+  --color-text-inverse: #0a0a0f;
+
+  /* ---- Semantic ---- */
+  --color-success: #06d6a0;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #4361ee;
+
+  /* ---- Border Radius ---- */
+  --radius-glass: 1rem;
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-neon-cyan: 0 0 20px rgba(6, 214, 160, 0.3), 0 0 60px rgba(6, 214, 160, 0.1);
+  --shadow-neon-violet: 0 0 20px rgba(124, 58, 237, 0.3), 0 0 60px rgba(124, 58, 237, 0.1);
+  --shadow-neon-pink: 0 0 20px rgba(247, 37, 133, 0.3), 0 0 60px rgba(247, 37, 133, 0.1);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glass-lg: 0 16px 64px rgba(0, 0, 0, 0.5);
+  --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+
+  /* ---- Animations ---- */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+  --animate-float-slow: float 8s ease-in-out 1s infinite;
+  --animate-pulse-neon: pulse-neon 2s ease-in-out infinite;
+  --animate-mesh-rotate: mesh-rotate 20s linear infinite;
+  --animate-gradient-shift: gradient-shift 8s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-scale-in: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-typing-cursor: typing-cursor 1s step-end infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+  --animate-counter-up: counter-up 2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(1deg); }
+    66% { transform: translateY(6px) rotate(-1deg); }
+  }
+
+  @keyframes pulse-neon {
+    0%, 100% { opacity: 1; filter: brightness(1); }
+    50% { opacity: 0.7; filter: brightness(1.3); }
+  }
+
+  @keyframes mesh-rotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(6, 214, 160, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(6, 214, 160, 0.4), 0 0 80px rgba(6, 214, 160, 0.1); }
+  }
+
+  @keyframes typing-cursor {
+    0%, 100% { border-color: var(--color-neon-cyan); }
+    50% { border-color: transparent; }
+  }
+
+  @keyframes counter-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ================================================================
+   Base Layer — Global Dark Mode Defaults
+   ================================================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: var(--color-glass-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', 'system-ui', -apple-system, sans-serif;
+    background-color: var(--color-surface-900);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-400);
+    border-radius: var(--radius-pill);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-surface-300);
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-neon-cyan-dim);
+    color: var(--color-text-primary);
+  }
+
+  /* Code fonts */
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+}
+
+/* ================================================================
+   Utility Layer — Glassmorphism, Gradients, Neon Effects
+   ================================================================ */
+
+@layer utilities {
+  /* ---- Glassmorphism Surfaces ---- */
+  .glass {
+    background: var(--color-glass-white);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .glass-hover:hover {
+    background: var(--color-glass-white-hover);
+    border-color: var(--color-glass-border-hover);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* ---- Mesh Gradient Backgrounds ---- */
+  .mesh-gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 40%, var(--color-neon-violet-glow), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 20%, var(--color-neon-cyan-glow), transparent),
+      radial-gradient(ellipse 50% 60% at 50% 80%, var(--color-neon-pink-glow), transparent),
+      var(--color-surface-900);
+  }
+
+  .mesh-gradient-intense {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(124, 58, 237, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(6, 214, 160, 0.12), transparent),
+      radial-gradient(ellipse 50% 60% at 50% 80%, rgba(247, 37, 133, 0.1), transparent),
+      var(--color-surface-900);
+  }
+
+  /* ---- Neon Text Gradients ---- */
+  .text-gradient-neon {
+    background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, var(--color-neon-pink), var(--color-neon-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cool {
+    background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ---- Neon Border Effects ---- */
+  .border-neon-cyan {
+    border: 1px solid var(--color-neon-cyan-dim);
+    box-shadow: inset 0 0 20px var(--color-neon-cyan-glow);
+  }
+
+  .border-neon-violet {
+    border: 1px solid var(--color-neon-violet-dim);
+    box-shadow: inset 0 0 20px var(--color-neon-violet-glow);
+  }
+
+  /* ---- Glow Effects ---- */
+  .glow-cyan {
+    box-shadow: var(--shadow-neon-cyan);
+  }
+
+  .glow-violet {
+    box-shadow: var(--shadow-neon-violet);
+  }
+
+  .glow-pink {
+    box-shadow: var(--shadow-neon-pink);
+  }
+
+  /* ---- Neon Button Variant ---- */
+  .btn-neon {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet));
+    color: var(--color-text-inverse);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 20px var(--color-neon-cyan-glow);
+  }
+
+  .btn-neon:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 30px rgba(6, 214, 160, 0.4),
+      0 0 60px rgba(6, 214, 160, 0.2),
+      0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-neon:active {
+    transform: translateY(0px);
+  }
+
+  /* ---- Subtle Grid Pattern Overlay ---- */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ---- Dot Pattern ---- */
+  .dot-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ---- Markdown Rendered Content ---- */
+  .markdown-body {
+    color: var(--color-text-primary);
+    line-height: 1.75;
+  }
+
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4 {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  .markdown-body h1 { font-size: 1.875rem; }
+  .markdown-body h2 { font-size: 1.5rem; border-bottom: 1px solid var(--color-glass-border); padding-bottom: 0.5em; }
+  .markdown-body h3 { font-size: 1.25rem; }
+
+  .markdown-body p {
+    margin-bottom: 1em;
+  }
+
+  .markdown-body a {
+    color: var(--color-neon-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .markdown-body a:hover {
+    border-bottom-color: var(--color-neon-cyan);
+  }
+
+  .markdown-body code {
+    background: var(--color-surface-600);
+    padding: 0.15em 0.4em;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    color: var(--color-neon-pink);
+  }
+
+  .markdown-body pre {
+    background: var(--color-surface-800);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.25em 0;
+  }
+
+  .markdown-body pre code {
+    background: none;
+    padding: 0;
+    color: var(--color-text-primary);
+  }
+
+  .markdown-body blockquote {
+    border-left: 3px solid var(--color-neon-violet);
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    margin: 1em 0;
+  }
+
+  .markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25em 0;
+  }
+
+  .markdown-body th {
+    background: var(--color-surface-600);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .markdown-body td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .markdown-body tr:hover td {
+    background: var(--color-glass-white);
+  }
+
+  .markdown-body ul, .markdown-body ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .markdown-body li {
+    margin-bottom: 0.35em;
+  }
+
+  .markdown-body hr {
+    border: none;
+    border-top: 1px solid var(--color-glass-border);
+    margin: 2em 0;
+  }
+
+  /* ---- YAML Frontmatter Display ---- */
+  .yaml-block {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(6, 214, 160, 0.05));
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .yaml-key {
+    color: var(--color-neon-violet);
+  }
+
+  .yaml-value {
+    color: var(--color-neon-cyan);
+  }
+
+  .yaml-delimiter {
+    color: var(--color-text-muted);
+  }
+}
+
+/* ================================================================
+   Component Layer — Specific Component Styles
+   ================================================================ */
+
+@layer components {
+  /* ---- Processing Stepper ---- */
+  .stepper-line {
+    background: linear-gradient(
+      to right,
+      var(--color-neon-cyan),
+      var(--color-neon-violet)
+    );
+    height: 2px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stepper-dot-active {
+    background: var(--color-neon-cyan);
+    box-shadow: 0 0 12px var(--color-neon-cyan-dim);
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  .stepper-dot-done {
+    background: var(--color-neon-cyan);
+    box-shadow: 0 0 8px var(--color-neon-cyan-dim);
+  }
+
+  .stepper-dot-pending {
+    background: var(--color-surface-400);
+  }
+
+  /* ---- File Tree ---- */
+  .file-tree-item {
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--color-text-secondary);
+  }
+
+  .file-tree-item:hover {
+    background: var(--color-glass-white-hover);
+    color: var(--color-text-primary);
+  }
+
+  .file-tree-item.active {
+    background: rgba(6, 214, 160, 0.08);
+    color: var(--color-neon-cyan);
+    border-left: 2px solid var(--color-neon-cyan);
+  }
+
+  /* ---- Chat Bubbles ---- */
+  .chat-bubble-user {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.08));
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 1rem 1rem 0.25rem 1rem;
+  }
+
+  .chat-bubble-assistant {
+    background: var(--color-glass-white);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 1rem 1rem 1rem 0.25rem;
+  }
+
+  /* ---- Dropzone ---- */
+  .dropzone {
+    border: 2px dashed var(--color-surface-400);
+    border-radius: var(--radius-card);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dropzone:hover,
+  .dropzone-active {
+    border-color: var(--color-neon-cyan);
+    background: rgba(6, 214, 160, 0.04);
+    box-shadow: inset 0 0 30px rgba(6, 214, 160, 0.05);
+  }
+
+  .dropzone-active {
+    border-style: solid;
+    animation: glow-pulse 1.5s ease-in-out infinite;
+  }
+}
