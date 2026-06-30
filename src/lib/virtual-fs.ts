@@ -224,7 +224,7 @@ export async function searchFiles(query: string): Promise<VFSFile[]> {
       f.content.toLowerCase().includes(lowerQuery) ||
       f.metadata.title.toLowerCase().includes(lowerQuery) ||
       f.metadata.description.toLowerCase().includes(lowerQuery) ||
-      f.metadata.tags.some((t) => t.toLowerCase().includes(lowerQuery))
+      f.metadata.tags.some((t: string) => t.toLowerCase().includes(lowerQuery))
   );
 }
 
